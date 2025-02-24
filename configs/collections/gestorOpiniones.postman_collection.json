@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "b9640916-2a68-4704-b30f-67cb0f1736b8",
+		"name": "gestorOpiniones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41656904"
+	},
+	"item": [
+		{
+			"name": "admins",
+			"item": [
+				{
+					"name": "registerAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jose\",\r\n  \"surname\": \"Cortez\",\r\n  \"username\": \"CortezK\",\r\n  \"email\": \"cortezk@gmail.com\",\r\n  \"password\": \"cortezk027\",\r\n  \"phone\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/auth/registerAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"auth",
+								"registerAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alexxok@gmail.com\",\r\n  \"password\": \"alexxok027\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/auth/loginAdmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"auth",
+								"loginAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAdmins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/admins/findAllAdmins?limite=10&desde=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"admins",
+								"findAllAdmins"
+							],
+							"query": [
+								{
+									"key": "limite",
+									"value": "10"
+								},
+								{
+									"key": "desde",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneAdmin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjYWEwYmMwOGM5MDFiY2U1YjE0NzciLCJpYXQiOjE3NDA0MTc2NjMsImV4cCI6MTc0MDQyMTI2M30.VSPuakQA7GMS1iz5kE_aEc8Yl7T_6Qv4q2txHSi-ZtQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/admins/findOneAdmin/67bcaa35c08c901bce5b147e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"admins",
+								"findOneAdmin",
+								"67bcaa35c08c901bce5b147e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putAdmin",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjYWEwYmMwOGM5MDFiY2U1YjE0NzciLCJpYXQiOjE3NDA0MTc2NjMsImV4cCI6MTc0MDQyMTI2M30.VSPuakQA7GMS1iz5kE_aEc8Yl7T_6Qv4q2txHSi-ZtQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Jouse\",\n  \"surname\": \"Boror\",\n  \"username\": \"BororK\",\n  \"email\": \"borork@gmail.com\",\n  \"password\": \"borork027\",\n  \"phone\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/admins/putAdmin/67bcaa7cc08c901bce5b1486",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"admins",
+								"putAdmin",
+								"67bcaa7cc08c901bce5b1486"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjYWEwYmMwOGM5MDFiY2U1YjE0NzciLCJpYXQiOjE3NDA0MTg1NTAsImV4cCI6MTc0MDQyMjE1MH0.4fNFMsCCsDPCEDjudGmtbNSUreB6DmOKo18XpO05E6A"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3003/gestorOpiniones/v1/admins/deleteAdmin/67bcaa7cc08c901bce5b1486",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"gestorOpiniones",
+								"v1",
+								"admins",
+								"deleteAdmin",
+								"67bcaa7cc08c901bce5b1486"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
