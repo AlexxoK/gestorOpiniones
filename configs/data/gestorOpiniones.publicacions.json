@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "67be0101f92d238575a87791"
+  },
+  "tittle": "Prueba 1",
+  "categories": [
+    {
+      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+    }
+  ],
+  "text": "Prueba 1",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T17:42:25.244Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T17:42:25.244Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be01edf92d238575a8779b"
+  },
+  "tittle": "Prueba 2",
+  "categories": [
+    {
+      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+    }
+  ],
+  "text": "Prueba 2",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T17:46:21.532Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T17:47:44.988Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be02caf92d238575a877b0"
+  },
+  "tittle": "Prueba 3",
+  "categories": [
+    {
+      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+    }
+  ],
+  "text": "Prueba 3",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-02-25T17:50:02.622Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T17:50:39.281Z"
+  }
+}]

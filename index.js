@@ -1,5 +1,13 @@
 import { config } from 'dotenv';
-import { initServer } from './configs/server.js';
+import { initServer, createSinCategoria } from './configs/server.js';
 
 config();
-initServer();
+
+const initializeServer = async () => {
+
+    await initServer();
+    
+    await createSinCategoria();
+};
+
+initializeServer();

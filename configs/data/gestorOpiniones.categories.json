@@ -1,14 +1,42 @@
 [{
   "_id": {
-    "$oid": "67bd2d9e27d62c5cdcb04fc3"
+    "$oid": "67bdfe92cbc73ff53c6ef2b3"
   },
-  "name": "Meme",
-  "description": "Memes de Facebook.",
-  "status": false,
+  "name": "Sin categoría",
+  "description": "Categoría para publicaciones sin clasificación",
+  "status": true,
   "createdAt": {
-    "$date": "2025-02-25T02:40:30.798Z"
+    "$date": "2025-02-25T17:32:02.016Z"
   },
   "updatedAt": {
-    "$date": "2025-02-25T02:53:38.581Z"
+    "$date": "2025-02-25T17:32:02.016Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be0140f92d238575a87797"
+  },
+  "name": "Memes",
+  "description": "Si te ries pierdes nivel gd.",
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-25T17:43:28.757Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T17:47:44.991Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67be029ff92d238575a877ac"
+  },
+  "name": "Paranormal",
+  "description": "Sucesos fuera de lo normal.",
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-25T17:49:19.885Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T17:50:39.282Z"
   }
 }]

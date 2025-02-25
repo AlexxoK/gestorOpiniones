@@ -19,7 +19,7 @@
 								"header": [
 									{
 										"key": "x-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkMmQzNzJhYjA3YTA2MDJmMmI2YjciLCJpYXQiOjE3NDA0NTEyMTgsImV4cCI6MTc0MDQ1NDgxOH0.geti-rXXwpJe35Y10byDUU0n2ivZqqXKNaBXvGVGxdI",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkMmQzNzJhYjA3YTA2MDJmMmI2YjciLCJpYXQiOjE3NDA1MDUzOTYsImV4cCI6MTc0MDUwODk5Nn0.orDaTUgE9dxAV4VuJPMPd7fsOmKoeed6JfLShH-X9to",
 										"type": "text"
 									}
 								],
@@ -149,18 +149,18 @@
 							"response": []
 						},
 						{
-							"name": "deleteCategoryByName",
+							"name": "deleteCategoryById",
 							"request": {
 								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkMmQzNzJhYjA3YTA2MDJmMmI2YjciLCJpYXQiOjE3NDA0NTEyMTgsImV4cCI6MTc0MDQ1NDgxOH0.geti-rXXwpJe35Y10byDUU0n2ivZqqXKNaBXvGVGxdI",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkMmQzNzJhYjA3YTA2MDJmMmI2YjciLCJpYXQiOjE3NDA1MDUzOTYsImV4cCI6MTc0MDUwODk5Nn0.orDaTUgE9dxAV4VuJPMPd7fsOmKoeed6JfLShH-X9to",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3003/gestorOpiniones/v1/categories/deleteCategoryById/67bd2d9e27d62c5cdcb04fc3",
+									"raw": "http://localhost:3003/gestorOpiniones/v1/categories/deleteCategoryById/67be029ff92d238575a877ac",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -171,7 +171,7 @@
 										"v1",
 										"categories",
 										"deleteCategoryById",
-										"67bd2d9e27d62c5cdcb04fc3"
+										"67be029ff92d238575a877ac"
 									]
 								}
 							},
@@ -589,6 +589,185 @@
 										"users",
 										"deleteUser",
 										"67bcf4748641d802aae63767"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "publicaciones",
+					"item": [
+						{
+							"name": "savePublicacion",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjZjJjNDg2NDFkODAyYWFlNjM3NWQiLCJpYXQiOjE3NDA1MDUzMzUsImV4cCI6MTc0MDUwODkzNX0.0L3ATWaohYcP5T98fdpDQr4T5ndjv7oYgBE2LTraxd8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tittle\": \"Prueba 3\",\r\n    \"text\": \"Prueba 3\",\r\n    \"categories\": [\"Paranormal\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3003/gestorOpiniones/v1/publicaciones/savePublicacion",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"gestorOpiniones",
+										"v1",
+										"publicaciones",
+										"savePublicacion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findAllPublicaciones",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3003/gestorOpiniones/v1/publicaciones/findAllPublicaciones?limite=10&desde=0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"gestorOpiniones",
+										"v1",
+										"publicaciones",
+										"findAllPublicaciones"
+									],
+									"query": [
+										{
+											"key": "limite",
+											"value": "10"
+										},
+										{
+											"key": "desde",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findPublicacionesByCategoryId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjZjJjNDg2NDFkODAyYWFlNjM3NWQiLCJpYXQiOjE3NDA0OTUxMjAsImV4cCI6MTc0MDQ5ODcyMH0.secp4li8GRTWLJeuUQBYP-O5T2VcQC4tEysKiPT1eyM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3003/gestorOpiniones/v1/publicaciones/findPublicacionesByCategoryId/67bdcfbd9a66826b023e6bd2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"gestorOpiniones",
+										"v1",
+										"publicaciones",
+										"findPublicacionesByCategoryId",
+										"67bdcfbd9a66826b023e6bd2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "putPublicacionById",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjZjJjNDg2NDFkODAyYWFlNjM3NWQiLCJpYXQiOjE3NDA0OTUxMjAsImV4cCI6MTc0MDQ5ODcyMH0.secp4li8GRTWLJeuUQBYP-O5T2VcQC4tEysKiPT1eyM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tittle\": \"gg\",\r\n    \"text\": \"Yiyi\",\r\n    \"categories\": [\"Meme\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3003/gestorOpiniones/v1/publicaciones/putPublicacionById/67bdcfbd9a66826b023e6bd4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"gestorOpiniones",
+										"v1",
+										"publicaciones",
+										"putPublicacionById",
+										"67bdcfbd9a66826b023e6bd4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePublicacionById",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JjZjJjNDg2NDFkODAyYWFlNjM3NWQiLCJpYXQiOjE3NDA0OTUxMjAsImV4cCI6MTc0MDQ5ODcyMH0.secp4li8GRTWLJeuUQBYP-O5T2VcQC4tEysKiPT1eyM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3003/gestorOpiniones/v1/publicaciones/deletePublicacionById/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3003",
+									"path": [
+										"gestorOpiniones",
+										"v1",
+										"publicaciones",
+										"deletePublicacionById",
+										""
 									]
 								}
 							},

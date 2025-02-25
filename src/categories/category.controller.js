@@ -1,4 +1,5 @@
 import Category from "../categories/category.model.js";
+import Publicacion from "../publicaciones/publicacion.model.js";
 
 export const saveCategory = async (req, res) => {
     try {
@@ -101,26 +102,51 @@ export const putCategoryById = async (req, res = response) => {
 }
 
 export const deleteCategoryById = async (req, res) => {
+    const { id } = req.params;
+
     try {
+        const categoryToDelete = await Category.findById(id);
 
-        const { id } = req.params;
+        if (!categoryToDelete || !categoryToDelete.status) {
+            return res.status(404).json({
+                success: false,
+                message: 'Categoría no encontrada o ya eliminada!'
+            });
+        }
 
-        const category = await Category.findByIdAndUpdate(id, { status: false }, { new: true });
+        let sinCategoria = await Category.findOne({ name: 'Sin categoría' });
 
-        const authenticatedCategory = req.category;
+        if (!sinCategoria) {
+            sinCategoria = new Category({
+                name: 'Sin categoría',
+                description: 'Categoría para publicaciones sin clasificación',
+                status: true
+            });
+            await sinCategoria.save();
+        }
+
+        const publicacionesToReassign = await Publicacion.find({ categories: categoryToDelete._id });
+
+        if (publicacionesToReassign.length > 0) {
+            await Publicacion.updateMany(
+                { _id: { $in: publicacionesToReassign.map(p => p._id) } },
+                { $set: { categories: [sinCategoria._id] } }
+            );
+        }
+
+        categoryToDelete.status = false;
+        await categoryToDelete.save();
 
         res.status(200).json({
             success: true,
-            msg: 'Deactivate category!',
-            category,
-            authenticatedCategory
-        })
+            message: 'Categoría eliminada correctamente! Las publicaciones han sido reasociadas a "Sin categoría".'
+        });
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Deactivate error!',
-            error
-        })
+            message: 'Error eliminando la categoría!',
+            error: error.message
+        });
     }
-}
+};
