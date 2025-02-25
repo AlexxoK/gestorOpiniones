@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "67bd2d9e27d62c5cdcb04fc3"
+  },
+  "name": "Meme",
+  "description": "Memes de Facebook.",
+  "status": false,
+  "createdAt": {
+    "$date": "2025-02-25T02:40:30.798Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T02:53:38.581Z"
+  }
+}]

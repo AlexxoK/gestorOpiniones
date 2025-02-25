@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getAdmins, getAdminById, updateAdmin, deleteAdmin } from "./admin.controller.js";
+import { findAllAdmins, findOneAdminById, putAdminById, /*deleteAdminById*/ } from "./admin.controller.js";
 import { existeAdminById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWTAdmin } from "../middlewares/validar-jwt.js";
@@ -8,10 +8,10 @@ import { tieneRoleAdmin } from "../middlewares/validar-roles.js";
 
 const router = Router();
 
-router.get("/findAllAdmins", getAdmins);
+router.get("/findAllAdmins", findAllAdmins);
 
 router.get(
-    "/findOneAdmin/:id",
+    "/findOneAdminById/:id",
     [
         validarJWTAdmin,
         tieneRoleAdmin("ADMIN_ROLE"),
@@ -19,11 +19,11 @@ router.get(
         check("id").custom(existeAdminById),
         validarCampos
     ],
-    getAdminById
+    findOneAdminById
 )
 
 router.put(
-    "/putAdmin/:id",
+    "/putAdminById/:id",
     [
         validarJWTAdmin,
         tieneRoleAdmin("ADMIN_ROLE"),
@@ -31,11 +31,11 @@ router.put(
         check("id").custom(existeAdminById),
         validarCampos
     ],
-    updateAdmin
+    putAdminById
 )
 
-router.delete(
-    "/deleteAdmin/:id",
+/*router.delete(
+    "/deleteAdminById/:id",
     [
         validarJWTAdmin,
         tieneRoleAdmin("ADMIN_ROLE"),
@@ -43,7 +43,7 @@ router.delete(
         check("id").custom(existeAdminById),
         validarCampos
     ],
-    deleteAdmin
-)
+    deleteAdminById
+)*/
 
 export default router;

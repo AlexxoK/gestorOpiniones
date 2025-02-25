@@ -9,12 +9,14 @@ export const loginUser = async (req, res) => {
 
     try {
 
-        const lowerEmail = email ? email.toLowerCase() : null;
-        const lowerUsername = username ? username.toLowerCase() : null;
+        const lowerEmail = email ? email.toLowerCase() : '';
+        const lowerUsername = username ? username.toLowerCase() : '';
 
         const user = await Usuario.findOne({
             $or: [{ email: lowerEmail }, { username: lowerUsername }]
         });
+
+        console.log(lowerUsername)
 
         if (!user) {
             return res.status(400).json({
@@ -97,12 +99,14 @@ export const loginAdmin = async (req, res) => {
 
     try {
 
-        const lowerEmail = email ? email.toLowerCase() : null;
-        const lowerUsername = username ? username.toLowerCase() : null;
+        const lowerEmail = email ? email.toLowerCase() : '';
+        const lowerUsername = username ? username.toLowerCase() : '';
 
         const admin = await Admin.findOne({
             $or: [{ email: lowerEmail }, { username: lowerUsername }]
         });
+
+        console.log(lowerUsername)
 
         if (!admin) {
             return res.status(400).json({
@@ -123,7 +127,7 @@ export const loginAdmin = async (req, res) => {
             });
         }
 
-        const token = await generarJWT(admin.id);
+        const token = await generarJWT( admin.id );
 
         return res.status(200).json({
             msg: 'Login OK!',

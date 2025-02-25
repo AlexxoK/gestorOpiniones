@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, getUserById, updateUser, updatePassword, deleteUser } from "./user.controller.js";
+import { findAllUsers, findOneUserById, putUserById, /*deleteUserById*/ } from "./user.controller.js";
 import { existeUsuarioById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWTUser } from "../middlewares/validar-jwt.js";
@@ -8,10 +8,10 @@ import { tieneRoleUser } from "../middlewares/validar-roles.js";
 
 const router = Router();
 
-router.get("/findAllUsers", getUsers);
+router.get("/findAllUsers", findAllUsers);
 
 router.get(
-    "/findOneUser/:id",
+    "/findOneUserById/:id",
     [
         validarJWTUser,
         tieneRoleUser("USER_ROLE"),
@@ -19,11 +19,11 @@ router.get(
         check("id").custom(existeUsuarioById),
         validarCampos
     ],
-    getUserById
+    findOneUserById
 )
 
 router.put(
-    "/putUser/:id",
+    "/putUserById/:id",
     [
         validarJWTUser,
         tieneRoleUser("USER_ROLE"),
@@ -31,11 +31,11 @@ router.put(
         check("id").custom(existeUsuarioById),
         validarCampos
     ],
-    updateUser
+    putUserById
 )
 
-router.put(
-    "/putPassword/:id",
+/*router.delete(
+    "/deleteUserById/:id",
     [
         validarJWTUser,
         tieneRoleUser("USER_ROLE"),
@@ -43,19 +43,7 @@ router.put(
         check("id").custom(existeUsuarioById),
         validarCampos
     ],
-    updatePassword
-)
-
-router.delete(
-    "/deleteUser/:id",
-    [
-        validarJWTUser,
-        tieneRoleUser("USER_ROLE"),
-        check("id", "id invalid!").isMongoId(),
-        check("id").custom(existeUsuarioById),
-        validarCampos
-    ],
-    deleteUser
-)
+    deleteUserById
+)*/
 
 export default router;

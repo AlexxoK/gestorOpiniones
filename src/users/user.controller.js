@@ -2,7 +2,7 @@ import { response, request } from "express";
 import { hash, verify } from "argon2";
 import User from "./user.model.js";
 
-export const getUsers = async (req = request, res = response) => {
+export const findAllUsers = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;
         const query = { estado: true };
@@ -29,7 +29,7 @@ export const getUsers = async (req = request, res = response) => {
     }
 }
 
-export const getUserById = async (req, res) => {
+export const findOneUserById = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -56,11 +56,11 @@ export const getUserById = async (req, res) => {
     }
 }
 
-export const updateUser = async (req, res = response) => {
+export const putUserById = async (req, res = response) => {
     try {
 
         const { id } = req.params;
-        const { _id, password, email, ...data } = req.body;
+        const { _id, password, ...data } = req.body;
 
         if (password) {
             data.password = await hash(password)
@@ -83,34 +83,7 @@ export const updateUser = async (req, res = response) => {
     }
 }
 
-export const updatePassword = async (req, res = response) => {
-    try {
-
-        const { id } = req.params;
-        const { password } = req.body;
-
-        if (password) {
-            data.password = await hash(password)
-        }
-
-        const user = await User.findByIdAndUpdate(id, { new: true });
-
-        res.status(200).json({
-            success: true,
-            msg: 'Password update!',
-            user
-        })
-
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            msg: 'Error update!',
-            error
-        })
-    }
-}
-
-export const deleteUser = async (req, res) => {
+/*export const deleteUserById = async (req, res) => {
     try {
 
         const { id } = req.params;
@@ -133,4 +106,4 @@ export const deleteUser = async (req, res) => {
             error
         })
     }
-}
+}*/

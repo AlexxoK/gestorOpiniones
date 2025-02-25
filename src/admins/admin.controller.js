@@ -2,7 +2,7 @@ import { response, request } from "express";
 import { hash, verify } from "argon2";
 import Admin from "./admin.model.js";
 
-export const getAdmins = async (req = request, res = response) => {
+export const findAllAdmins = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;
         const query = { estado: true };
@@ -29,7 +29,7 @@ export const getAdmins = async (req = request, res = response) => {
     }
 }
 
-export const getAdminById = async (req, res) => {
+export const findOneAdminById = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -56,7 +56,7 @@ export const getAdminById = async (req, res) => {
     }
 }
 
-export const updateAdmin = async (req, res = response) => {
+export const putAdminById = async (req, res = response) => {
     try {
 
         const { id } = req.params;
@@ -83,7 +83,7 @@ export const updateAdmin = async (req, res = response) => {
     }
 }
 
-export const deleteAdmin = async (req, res) => {
+/*export const deleteAdminById = async (req, res) => {
     try {
 
         const { id } = req.params;
@@ -106,4 +106,4 @@ export const deleteAdmin = async (req, res) => {
             error
         })
     }
-}
+}*/
