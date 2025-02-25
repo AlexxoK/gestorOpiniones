@@ -13,7 +13,6 @@ router.post(
     [
         validarJWTUser,
         tieneRoleUser("USER_ROLE"),
-        check("id", "id invalid!").isMongoId(),
         validarCampos
     ],
     savePublicacion

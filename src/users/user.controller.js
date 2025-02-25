@@ -83,6 +83,46 @@ export const putUserById = async (req, res = response) => {
     }
 }
 
+export const putPassword = async (req = request, res = response) => {
+    const { oldPassword, newPassword } = req.body;
+    const userId = req.usuario.id;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "Usuario no encontrado!",
+            });
+        }
+
+        const passwordMatch = await verify(user.password, oldPassword);
+        if (!passwordMatch) {
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña actual es incorrecta!",
+            });
+        }
+
+        const hashedPassword = await hash(newPassword);
+
+        user.password = hashedPassword;
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Contraseña actualizada correctamente!",
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error actualizando la contraseña!",
+            error: error.message,
+        });
+    }
+};
+
 /*export const deleteUserById = async (req, res) => {
     try {
 

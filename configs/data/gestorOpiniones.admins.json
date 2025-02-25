@@ -1,20 +1,20 @@
 [{
   "_id": {
-    "$oid": "67bd2d372ab07a0602f2b6b7"
+    "$oid": "67be2e463e90a6a77fe10d68"
   },
-  "name": "Diego",
-  "surname": "Monterroso",
-  "username": "AlexxoK",
-  "email": "alexxok@gmail.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$ZwCRA95UwyMyvskz8Hi0og$kvsf1OwnPPSbE1L8GBJpufRoKgfxOAxdy0JtKh4+coo",
+  "name": "Elmer",
+  "surname": "Santos",
+  "username": "SantosK",
+  "email": "santosk@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$gNoqQmq95K4KrYevYNQ/6g$2Zx2TR8ybM9fNDcAmkGFULRng0rByVXDMiRBm0PQjqg",
   "phone": "12345678",
   "role": "ADMIN_ROLE",
   "estado": true,
   "createdAt": {
-    "$date": "2025-02-25T02:38:47.223Z"
+    "$date": "2025-02-25T20:55:34.161Z"
   },
   "updatedAt": {
-    "$date": "2025-02-25T02:38:47.223Z"
+    "$date": "2025-02-25T20:55:34.161Z"
   },
   "__v": 0
 }]

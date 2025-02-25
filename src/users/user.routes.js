@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { findAllUsers, findOneUserById, putUserById, /*deleteUserById*/ } from "./user.controller.js";
+import { findAllUsers, findOneUserById, putUserById, putPassword, /*deleteUserById*/ } from "./user.controller.js";
 import { existeUsuarioById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWTUser } from "../middlewares/validar-jwt.js";
@@ -33,6 +33,18 @@ router.put(
     ],
     putUserById
 )
+
+router.put(
+    "/putPassword",
+    [
+        validarJWTUser,
+        tieneRoleUser("USER_ROLE"),
+        check("oldPassword", "La contraseña antigua es requerida!").not().isEmpty(),
+        check("newPassword", "La nueva contraseña es requerida y debe tener al menos 8 caracteres!").isLength({ min: 8 }),
+        validarCampos
+    ],
+    putPassword
+);
 
 /*router.delete(
     "/deleteUserById/:id",

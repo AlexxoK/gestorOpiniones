@@ -1,57 +1,66 @@
 [{
   "_id": {
-    "$oid": "67be0101f92d238575a87791"
+    "$oid": "67be367af7c321758fa8c653"
   },
   "tittle": "Prueba 1",
   "categories": [
     {
-      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+      "$oid": "67be2e463e90a6a77fe10d6e"
     }
   ],
-  "text": "Prueba 1",
+  "text": "P1",
   "status": true,
+  "userId": {
+    "$oid": "67be2e463e90a6a77fe10d6b"
+  },
   "createdAt": {
-    "$date": "2025-02-25T17:42:25.244Z"
+    "$date": "2025-02-25T21:30:34.118Z"
   },
   "updatedAt": {
-    "$date": "2025-02-25T17:42:25.244Z"
+    "$date": "2025-02-25T21:30:34.118Z"
   }
 },
 {
   "_id": {
-    "$oid": "67be01edf92d238575a8779b"
+    "$oid": "67be3706a021b8ef369b48fb"
   },
   "tittle": "Prueba 2",
   "categories": [
     {
-      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+      "$oid": "67be2e463e90a6a77fe10d6e"
     }
   ],
-  "text": "Prueba 2",
+  "text": "P2",
   "status": true,
+  "userId": {
+    "$oid": "67be2e463e90a6a77fe10d6b"
+  },
   "createdAt": {
-    "$date": "2025-02-25T17:46:21.532Z"
+    "$date": "2025-02-25T21:32:54.562Z"
   },
   "updatedAt": {
-    "$date": "2025-02-25T17:47:44.988Z"
+    "$date": "2025-02-25T21:34:03.324Z"
   }
 },
 {
   "_id": {
-    "$oid": "67be02caf92d238575a877b0"
+    "$oid": "67be378aa021b8ef369b490e"
   },
   "tittle": "Prueba 3",
   "categories": [
     {
-      "$oid": "67bdfe92cbc73ff53c6ef2b3"
+      "$oid": "67be2e463e90a6a77fe10d6e"
     }
   ],
-  "text": "Prueba 3",
-  "status": true,
+  "text": "P3",
+  "status": false,
+  "userId": {
+    "$oid": "67be2e463e90a6a77fe10d6b"
+  },
   "createdAt": {
-    "$date": "2025-02-25T17:50:02.622Z"
+    "$date": "2025-02-25T21:35:06.495Z"
   },
   "updatedAt": {
-    "$date": "2025-02-25T17:50:39.281Z"
+    "$date": "2025-02-25T21:48:06.702Z"
   }
 }]

@@ -23,7 +23,6 @@ export const saveCategory = async (req, res) => {
     }
 }
 
-
 export const findAllCategories = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;

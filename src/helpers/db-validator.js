@@ -3,6 +3,7 @@ import User from '../users/user.model.js';
 import Admin from '../admins/admin.model.js';
 import Category from '../categories/category.model.js';
 import Publicacion from '../publicaciones/publicacion.model.js';
+import Comment from '../comments/comment.model.js';
 
 export const esRoleValido = async (role = ' ') => {
     const existeRol = await Role.findOne({ role });
@@ -14,14 +15,6 @@ export const esRoleValido = async (role = ' ') => {
 
 export const existenteUserEmail = async (email = ' ') => {
     const existeEmail = await User.findOne({ email });
-
-    if (existeEmail) {
-        throw new Error(`Email ${email} exists in the database!`);
-    }
-}
-
-export const existenteAdminEmail = async (email = ' ') => {
-    const existeEmail = await Admin.findOne({ email });
 
     if (existeEmail) {
         throw new Error(`Email ${email} exists in the database!`);
@@ -64,6 +57,14 @@ export const existePublicacionById = async (id = '') => {
     const existePublicacion = await Publicacion.findById(id);
 
     if (!existePublicacion) {
+        throw new Error(`id ${id} dont exists!`);
+    }
+}
+
+export const existeCommentById = async (id = '') => {
+    const existeComment = await Comment.findById(id);
+
+    if (!existeComment) {
         throw new Error(`id ${id} dont exists!`);
     }
 }

@@ -1,22 +1,12 @@
 import { body } from "express-validator";
 import { validarCampos } from "./validar-campos.js";
-import { existenteUserEmail, existenteAdminEmail, esRoleValido } from "../helpers/db-validator.js";
+import { existenteUserEmail, esRoleValido } from "../helpers/db-validator.js";
 
 export const registerUserValidator = [
     body("name", "The name is required!").not().isEmpty(),
     body("surname", "The surname is required!").not().isEmpty(),
     body("email", "You must enter a valid email!").isEmail(),
     body("email").custom(existenteUserEmail),
-    body('role').custom(esRoleValido),
-    body("password", "Password must be at least 8 cahracters!").isLength({ min: 8 }),
-    validarCampos
-];
-
-export const registerAdminValidator = [
-    body("name", "The name is required!").not().isEmpty(),
-    body("surname", "The surname is required!").not().isEmpty(),
-    body("email", "You must enter a valid email!").isEmail(),
-    body("email").custom(existenteAdminEmail),
     body('role').custom(esRoleValido),
     body("password", "Password must be at least 8 cahracters!").isLength({ min: 8 }),
     validarCampos

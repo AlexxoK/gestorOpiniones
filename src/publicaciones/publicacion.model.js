@@ -23,11 +23,17 @@ const PublicacionSchema = Schema({
     status: {
         type: Boolean,
         default: true
+    },
+
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "Usuario",
+        required: true
     }
-},
-    {
-        timestamps: true,
-        versionKey: false
-    });
+
+}, {
+    timestamps: true,
+    versionKey: false
+});
 
 export default model('Publicacion', PublicacionSchema);

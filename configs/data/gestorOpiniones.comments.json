@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "67be4f6f8ef68424fc683c21"
+  },
+  "content": "Si funciona mi código gente!",
+  "author": {
+    "$oid": "67be2e463e90a6a77fe10d6b"
+  },
+  "publicacion": {
+    "$oid": "67be367af7c321758fa8c653"
+  },
+  "createdAt": {
+    "$date": "2025-02-25T23:17:03.901Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T23:17:43.733Z"
+  }
+}]

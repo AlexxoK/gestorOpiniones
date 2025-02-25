@@ -9,29 +9,27 @@ export const savePublicacion = async (req, res) => {
         let categoryIds = [];
 
         if (data.categories && Array.isArray(data.categories) && data.categories.length > 0) {
-            for (const categoryName of data.categories) {
-                let category = await Category.findOne({ name: categoryName });
+            const categories = await Category.find({ name: { $in: data.categories } });
 
-                if (!category) {
-                    category = new Category({
-                        name: categoryName,
-                        description: `Categoría llamada ${categoryName} creada automáticamente.`,
-                    });
-                    await category.save();
-                }
-
-                categoryIds.push(category._id);
+            if (categories.length !== data.categories.length) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'Una o más categorías no fueron encontradas!'
+                });
             }
+
+            categoryIds = categories.map(category => category._id);
         } else {
-            let sinCategoria = await Category.findOne({ name: "Sin categoría" });
+            let sinCategoria = await Category.findOne({ name: 'Sin categoría' });
 
             if (!sinCategoria) {
                 sinCategoria = new Category({
-                    name: "Sin categoría",
-                    description: "Esta categoría no tiene una descripción definida.",
+                    name: 'Sin categoría',
+                    description: 'Categoría para publicaciones sin clasificación',
                     status: true,
                 });
                 await sinCategoria.save();
+                console.log('Categoría "Sin categoría" creada correctamente!');
             }
 
             categoryIds = [sinCategoria._id];
@@ -39,7 +37,8 @@ export const savePublicacion = async (req, res) => {
 
         const publicacion = new Publicacion({
             ...data,
-            categories: categoryIds
+            categories: categoryIds,
+            userId: req.usuario._id
         });
 
         await publicacion.save();
@@ -60,7 +59,6 @@ export const savePublicacion = async (req, res) => {
         });
     }
 };
-
 
 export const findAllPublicaciones = async (req, res) => {
     const { limite = 10, desde = 0 } = req.query;
@@ -137,14 +135,21 @@ export const putPublicacionById = async (req, res) => {
     try {
         const { id } = req.params;
         const data = req.body;
+        const userId = req.usuario._id;
 
-        const existingPublicacion = await Publicacion.findById(id)
-            .populate('categories');
+        const existingPublicacion = await Publicacion.findById(id).populate('categories');
 
         if (!existingPublicacion) {
             return res.status(404).json({
                 success: false,
                 message: 'Publicación no encontrada!'
+            });
+        }
+
+        if (existingPublicacion.userId.toString() !== userId.toString()) {
+            return res.status(403).json({
+                success: false,
+                message: 'No puedes editar una publicación que no es tuya!'
             });
         }
 
@@ -161,6 +166,20 @@ export const putPublicacionById = async (req, res) => {
             }
 
             categoryIds = categories.map(category => category._id);
+        } else {
+            let sinCategoria = await Category.findOne({ name: 'Sin categoría' });
+
+            if (!sinCategoria) {
+                sinCategoria = new Category({
+                    name: 'Sin categoría',
+                    description: 'Categoría para publicaciones sin clasificación',
+                    status: true,
+                });
+                await sinCategoria.save();
+                console.log('Categoría "Sin categoría" creada correctamente!');
+            }
+
+            categoryIds = [sinCategoria._id];
         }
 
         const updatedPublicacion = await Publicacion.findByIdAndUpdate(
@@ -192,6 +211,7 @@ export const putPublicacionById = async (req, res) => {
 
 export const deletePublicacionById = async (req, res) => {
     const { id } = req.params;
+    const userId = req.usuario._id;
 
     try {
         const publicacionToDelete = await Publicacion.findById(id);
@@ -200,6 +220,13 @@ export const deletePublicacionById = async (req, res) => {
             return res.status(404).json({
                 success: false,
                 message: 'Publicación no encontrada o ya eliminada!'
+            });
+        }
+
+        if (publicacionToDelete.userId.toString() !== userId.toString()) {
+            return res.status(403).json({
+                success: false,
+                message: 'No puedes eliminar una publicación que no es tuya!'
             });
         }
 

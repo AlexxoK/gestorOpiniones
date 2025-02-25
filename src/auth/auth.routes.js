@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { loginUser, registerUser, loginAdmin, registerAdmin } from './auth.controller.js';
-import { registerAdminValidator, registerUserValidator, loginValidator } from '../middlewares/validator.js';
+import { login, registerUser } from './auth.controller.js';
+import { registerUserValidator, loginValidator } from '../middlewares/validator.js';
 import { deleteFileOnError } from '../middlewares/delete-file-on-error.js';
 
 const router = Router();
 
 router.post(
-    '/loginUser',
+    '/login',
     loginValidator,
     deleteFileOnError,
-    loginUser
+    login
 );
 
 router.post(
@@ -17,20 +17,6 @@ router.post(
     registerUserValidator,
     deleteFileOnError,
     registerUser
-);
-
-router.post(
-    '/loginAdmin',
-    loginValidator,
-    deleteFileOnError,
-    loginAdmin
-);
-
-router.post(
-    '/registerAdmin',
-    registerAdminValidator,
-    deleteFileOnError,
-    registerAdmin
 );
 
 export default router;
